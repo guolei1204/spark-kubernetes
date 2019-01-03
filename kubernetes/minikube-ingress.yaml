@@ -1,10 +1,15 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: test-ingress
+  name: example-ingress
   annotations:
-      nginx.ingress.kubernete.io/rewrite-target: /
+    ingress.kubernetes.io/rewrite-target: /
+
 spec:
-  backend:
-    serviceName: spark-master
-    servicePort: 8080
+  rules:
+  - http:
+      paths:
+        - path: /
+          backend:
+            serviceName: spark-master
+            servicePort: 8080
