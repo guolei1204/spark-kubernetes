@@ -1,14 +1,10 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: minikube-ingress
+  name: test-ingress
   annotations:
+      nginx.ingress.kubernete.io/rewrite-target: /
 spec:
-  rules:
-  - host: spark-kubernetes
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: spark-master
-          servicePort: 8080
+  backend:
+    serviceName: spark-master
+    servicePort: 8080
